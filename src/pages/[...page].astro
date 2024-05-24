@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "My Astro Learning Blog";
+
+export async function getStaticPaths({ paginate }: any): Promise<any> {
+    const pages = await Astro.glob("./posts/*.md");
+
+    return paginate(pages, { pageSize: 5
+     });
+}
+
+const { page }: any = Astro.props;
+const { prev, next } = page.url;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    {
+        page.data.map((post: any) => (
+            <div class="post">
+                <p class="post-title">
+                    <a href={`${post.url}`}>{post.frontmatter.title}</a>
+                </p>
+                <p>{post.frontmatter.description}</p>
+                <p>Published in {post.frontmatter.pubDate.toString().slice(0, 10)}</p>
+            </div>
+        ))
+    }
+    <div class="pagination-buttons">
+        {
+            prev && (
+                <p>
+                    <a href={prev}>&lt; Previous</a>
+                </p>
+            )
+        }
+        {prev && next && <span>&ensp;</span>}
+        {
+            next && (
+                <p>
+                    <a href={next}>Next &gt;</a>
+                </p>
+            )
+        }
+    </div>
+</BaseLayout>
