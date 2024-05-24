@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
 const { pageTitle } = Astro.props;
+
+const isProd: boolean = import.meta.env.PROD;
+const BASE_URL: string = 'http://159.223.235.105/blog/';
 ---
 
 <html lang="en">
@@ -12,7 +15,7 @@ const { pageTitle } = Astro.props;
         <title>{pageTitle}</title>
     </head>
     <body>
-        <h1 class="page-title"><a href="/">My Blog</a></h1>
+        <h1 class="page-title"><a href={isProd ? BASE_URL : '/'}>My Blog</a></h1>
         <slot />
     </body>
 </html>

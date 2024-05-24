@@ -9,4 +9,4 @@ tags: ["astro", "beginners"]
 
 # Hello World!
 
-This is my first post.
+This is my first post and the best one.
