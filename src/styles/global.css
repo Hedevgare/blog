@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+    --bg-color: #141414;
+    --fg-color: #DEEFB7;
+    --code-bg-color: #24292e;
+    --code-color: #a5a5a5;
+}
 
 body {
     margin: auto;
     font-family: 'Sora', sans-serif;
-    background-color: #141414;
+    background-color: var(--bg-color);
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -11,8 +19,25 @@ body {
     line-height: 1.75;
 }
 
+footer {
+    margin: 50px 0;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
 a {
-    color: #DEEFB7;
+    color: var(--fg-color);
+}
+
+code {
+    font-family: 'Ubuntu Sans Mono', monospace;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+    padding: 1px 5px;
+    border-radius: 5px;
 }
 
 hr {
@@ -27,7 +52,7 @@ hr {
 }
 
 .page-title > a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -58,7 +83,7 @@ hr {
 }
 
 .tag {
-    border: dotted 1px #DEEFB7;
+    border: dotted 1px var(--fg-color);
     padding: 0.25em 0.75em;
     font-size: 1.15em;
 }
