@@ -3,13 +3,10 @@ import rehypeExpressiveCode from 'rehype-expressive-code';
 import expressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
-const isProd = import.meta.env.PROD;
-
 const rehypeExpressiveCodeOptions = {}
 
 // https://astro.build/config
 export default defineConfig({
-    base: isProd ? 'blog' : '',
     markdown: {
         syntaxHighlight: 'shiki',
         remarkPlugins: [],
