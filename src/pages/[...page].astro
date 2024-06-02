@@ -6,6 +6,8 @@ const pageTitle = "My Astro Learning Blog";
 export async function getStaticPaths({ paginate }: any): Promise<any> {
     const pages = await Astro.glob("./posts/*.md");
 
+    pages.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
+
     return paginate(pages, { pageSize: 5 });
 }
 
@@ -15,7 +17,7 @@ const { prev, next } = page.url;
 
 <BaseLayout pageTitle={pageTitle}>
     {
-        page.data.map((post: any) => (
+        page.data.sort(() => {}).map((post: any) => (
             <div class="post">
                 <p class="post-title">
                     <a href={`${post.url}`}>
