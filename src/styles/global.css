@@ -76,6 +76,11 @@ hr {
     font-size: 26px;
 }
 
+.resources {
+    display: flex;
+    flex-direction: column;
+}
+
 .tags {
     display: flex;
     flex-wrap: wrap;

@@ -18,8 +18,8 @@ const { frontmatter } = Astro.props;
     <h1>{frontmatter.title}</h1>
     <slot />
     {frontmatter.resources && (
+        <h2>Additional Resources</h2>
         <div class="resources">
-            <h2>Additional Resources</h2>
                 {frontmatter.resources.map((resource: any) => (
                     <a href={resource} target="_blank" rel="noopener noreferrer">
                         {resource}</a>
