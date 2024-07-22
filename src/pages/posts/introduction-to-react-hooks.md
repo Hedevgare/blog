@@ -28,7 +28,7 @@ Using a simple example to demonstrate how to implement the `useState` hook, here
 ```js title="useState.js"
 import { useState } from "react";
 
-export function App() {
+export default function App() {
     const [count, setCount] = useState(0);
 
     return (
@@ -40,7 +40,51 @@ export function App() {
 ```
 
 ### useReducer
-In this example, we'll have a component with a form.
+On the surface, `useReducer` is very similar to `useState`, but it lets you move the state update logic from multiple event handlers into a single function.
+
+In this example, we'll have a component with a form and we'll make use of the `useReducer` hook to update it; the form is made of a text input where the user can type a *name* and two buttons for the user to *increment* or *decrement* an *age* value.
+
+```js title="useReducer.js"
+import { useReducer } from "react";
+
+function reducer(state, action) {
+    switch(action.type) {
+        case "changed_name": {
+            return {
+                ...state,
+                name: action.newName
+            };
+        }
+        case "incremented_age": {
+            return {
+                ...state,
+                age: state.age + 1
+            };
+        }
+        case "decremented_age": {
+            return {
+                ...state,
+                age: state.age - 1
+            };
+        }
+    }
+}
+
+export default function App() {
+    const [state, dispatch] = useReducer(reducer, { name: "John", age: 25 });
+
+    return (
+        <>
+            <input value={state.name} onChange={(e) => dispatch({ type: "changed_name", newName: e.target.value })} />
+            <div>
+                <button onClick={() => dispatch({ type: "decremented_age" })}>Decrement age</button>
+                <button onClick={() => dispatch({ type: "incremented_age" })}>Increment age</button>
+            </div>
+            <p>Hello { state.name }, your age is { state.age }.</p>
+        </>
+    );
+}
+```
 
 ## Context Hooks
 In *React*, passing data from a parent component to its children can be troublesome, specially if those children are too deep into the component tree. This is called *prop drilling*, which is the process of passing data through multiple levels of components.
