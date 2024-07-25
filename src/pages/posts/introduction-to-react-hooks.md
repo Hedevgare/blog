@@ -92,6 +92,88 @@ In *React*, passing data from a parent component to its children can be troubles
 To pass information to a component from a distant parent without *prop drilling* you can use context. A top-level component can pass its current context to all components below, no matter how deep they are, using a context hook.
 - `useContext` : reads and subscribes to a context
 
+### useContext
+A common use case for the `useContext` hook is applying a dynamic theme to your app. In this example, we'll demonstrate how to implement a light/dark mode toggle using this hook.
+
+As you'll see below, the parent component, called `App` is the one that holds the information on what theme is active; that `theme` is stored using a `useState` hook, that is passed through context to all children. All components that need to know the value of `theme` need to be wrapped in a `Context.Provider` component that we create using the `createContext` function.
+
+```js wrap title="useContext.js"
+import { createContext, useContext, useState } from "react";
+
+const ThemeContext = createContext();
+
+export default function App() {
+    const [theme, setTheme] = useState("light");
+
+    return (
+        <ThemeContext.Provider value={theme}>
+            <Header />
+            <section>
+                <Sidebar />
+                <Body />
+            </section>
+            <Footer />
+            <label><input type="checkbox" onChange={(e) => { setTheme(e.target.checked ? 'dark' : 'light') }} />Use dark mode</label>
+        </ThemeContext.Provider>
+    );
+}
+
+const Header = () => {
+    const theme = useContext(ThemeContext);
+    return <header className={theme}>Header</header>;
+}
+
+const Sidebar = () => {
+    const [theme] = useState("dark");
+    return <div className={theme}>Sideber</div>;
+}
+
+const Body = () => {
+    const theme = useContext(ThemeContext);
+    return <div className={theme}>Body</div>;
+}
+
+const Footer = () => {
+    const theme = useContext(ThemeContext);
+    return <footer className={theme}>Footer</footer>;
+}
+```
+
+In this example, we have a simple app structure with an `<Header />`, an `<Sidebar />`, a `<Body />` and a `<Footer />`, followed by a checkbox. This checkbox is what allows the user to change the app theme. When the user checks or unchecks the checkbox all components that subscribe to the `useContext` hook will have is theme changed. If you try this code, you will see that the `<Sidebar />` component does not change and is always using the "dark" theme, this is because that component has its own theme defined by the `useState` hook.
+
+To finalize, let's type some *CSS* to make the example prettier and to show you what the classes **.light** and **.dark** are in terms of code.
+
+```css title="styles.css"
+header, div, footer {
+    padding: 10px;
+    margin: 10px;
+}
+
+section {
+    display: flex;
+}
+
+section div {
+  flex: 1;
+}
+
+section div:last-child {
+  flex: 2;
+}
+
+.light {
+    background-color: #ffffff;
+    color: #141414;
+}
+
+.dark {
+    background-color: #141414;
+    color: #ffffff;
+}
+```
+
+This *CSS* snippet does not add any information for you to understand how to use and apply the `useContext` hook, I just like to show all the code I used to offer more context and completeness to my example.
+
 ## Ref Hooks
 When you want a component to hold some information, like a DOM node, but you don't want to trigger new renders, you should use a *ref*. Unlike state, updating a ref does not trigger a re-render of your component.
 
