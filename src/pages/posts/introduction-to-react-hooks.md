@@ -180,28 +180,140 @@ When you want a component to hold some information, like a DOM node, but you don
 Refs are very useful when you need to work with non-*React* systems, like built-in browser APIs.
 - `useRef` : declares a ref
 
+### useRef
+
+Now let's see a simple example, where we will use the `useRef` hook to focus an `<input />` element when we press a button.
+
+```js title="useRef.js"
+import { useRef } from "react";
+
+export default function App() {
+    const inputRef = useRef(null);
+
+    const focusInput = () => {
+        inputRef.current.focus();
+    }
+
+    return (
+        <>
+            <input ref={inputRef} />
+            <button onClick={focusInput}>Focus input</button>
+        </>
+    );
+}
+```
+
+Like I mentioned, this is a really simple example, but enough to demonstrate the power of the `useRef` hook. In this example, we hold an `<input />` element, with the hook created with a starting value of `null`, using `ref={inputRef}`; then, with a function that is called on each button click, using plain *JavaScript*, we focus that DOM element.
+
+This hook is very useful for cases when you don't want to trigger an app re-render. In this case, this is exactly what happens. When the function `focusInput` is called, *React* does not trigger a re-render.
+
 ## Effect Hooks
 Effect hooks are useful when a component needs to deal with network, browser DOM, animations, even interact with a non-*React* component; they allow you to run code after rendering.
 
 As an example, let's say your component needs to fetch data from a remote server. To accomplish this task, an effect hook would be the best tool to use. Since a data fetch is an asynchronous task, an effect hook unsures that the remote call runs only after the component has rendered, which makes the user experience much better.
 - `useEffect` : connects a component to an external system
 
+### useEffect
+
+For this example, I will show how to make calls to an API to fetch some *Chuck Norris* jokes, using the `useEffect` hook.
+
+```js title="useEffect"
+import { useEffect, useState } from "react";
+
+export default function App() {
+    const [joke, setJoke] = useState(null);
+
+    useEffect(() => {
+        fetch("https://api.chucknorris.io/jokes/random")
+            .then(response => response.json())
+            .then(data => setJoke(data.value));
+    }, []);
+
+    return (
+        <p>{joke}</p>
+    );
+}
+```
+
+If you try this code, you will see that a new joke is shown everytime the app is reloaded. This happens because of a simple piece of code, `[]`. This second argument, of the `useEffect` function, is an array that represents the **dependencies** of the hook; everytime a dependency changes its value, the **setup function**, the first argument of the `useEffect` function is executed.
+
+When, like in this case, the dependencies array is empty, the setup function is executed only one time, during the first render of the app.
+
+If you want to run the effect every time the app re-renders, you just omit the dependecies argument.
+
 ## Performance Hooks
 Optimization should be a concern if, for example, your app does lots and very complicated calculations, which can make the app very slow and irresponsive for some time. A common way to optimize re-rendering performance is to skip unnecessary work. For example, you can reuse a cached calculation or skip a re-render if data has not changed using performance hooks, like:
 - `useMemo` : lets you cache the result of an expensive calculation
 - `useCallback` : lets you cache a function definition before passing it down to an optimized component
 
+### useMemo
+
+Here, we will have a function that sums all values in an array. As we add more numbers to the array, more time it will take for the code to execute the function that sums all numbers (even though this time can be negligible in some cases, like in this example), and that will have performance implications in your app. So, to prevent that from happening, we can cache the result of that function and just execute it when necessary.
+
+```js title="useMemo.js"
+import { useMemo, useState } from "react";
+
+export default function App() {
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+    const [inputValue, setInputValue] = useState("");
+
+    const addNumber = () => {
+        setNumbers([...numbers, Math.floor(Math.random() * 100)]);
+    }
+
+    const sum = useMemo(() => {
+        console.log("Calculating sum...");
+        return numbers.reduce((a, b) => a + b, 0);;
+    }, [numbers]);
+
+    return (
+        <>
+            <h1>Sum:{sum}</h1>
+            <button onClick={addNumber}>Add number</button>
+            <input value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+        </>
+    );
+}
+```
+
+If you open your browser console, you should see the message "*Calculating sum...*" (you should see the sum number too) everytime the user clicks the button to add a number, meaning that the calculation was executed. But, if you try to change the input value, that message is not shown, that's because the calculation is only executed when one dependency changes its value; in this case that dependency is represented by `[numbers]`.
+
+For learning purposes, I recommend you to try to remove the dependencies array from the `useMemo` function and see what happens.
+Spoiler alert, the result you will see is the reason why this hook is so powerful and useful for making ours apps perform better.
+
+### useCallback
+
+This hook is similar to `useMemo`, but instead of caching a value, it caches a function. In this example, we will see a list of items where we can filter it using a text input.
+
+```js title="useCallback.js"
+import { useCallback, useState } from "react";
+
+export default function App() {
+    const [items] = useState(["Apple", "Banana", "Orange", "Grapes", "Mango"]);
+    const [filter, setFilter] = useState("");
+
+    const filteredItems = useCallback(() => {
+        return items.filter((item) => item.toLowerCase().includes(filter.toLowerCase()));
+    }, [filter]);
+
+    return (
+        <>
+            <input value={filter} onChange={(e) => setFilter(e.target.value)} />
+            <ul>
+                {
+                    filteredItems().map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))
+                }
+            </ul>
+        </>
+    );
+}
+```
+
+When the `filter` value changes the functin cached is recreated with the new changes; if the user does not change the input the function is already cached and is ready to be executed, making the code (even though unoticeable in this example since its very simple) faster.
+
+Although this example is very simple, it shows how the `useCallback` hook works and its advantages to optimize our components.
+
 ## Custom Hooks
 *React* comes with several built-in hooks, not just the ones I have listed above, but sometimes you might need a hook for something more specific. For that purpose, *React* allows you to create your own custom hooks.
-
-<!-- ## Context Hooks
-
-## Ref Hooks
-
-## Effect Hooks
-
-## Performance Hooks
-
-## Custom Hooks
-
-## Conclusion -->
