@@ -60,13 +60,28 @@ We will also add some *CSS* classes and IDs for styling and DOM manipulation wit
 </html>
 ```
 
+Let's add some styles now to finish our basic setup. Create a file called `styles.css` and type the following code.
+
+```css title="styles.css"
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+```
+
 Now that we have our *HTML* structure and can start adding some interactivity.
 
 If you try the code that we have so far, the modal it's being shown under the `<button id="btnModal">Open modal</button>`, as it should, because we are missing the styles to hide it.
 
-Let's add some styles now. Create a file called `styles.css` and type the following code.
+Open the `styles.css` file and add the following styles.
 
-```css title="styles.css"
+```css title="styles.css" ins={2-37}
+/* ... (previous code) */
 #modal {
     display: none;
     position: absolute;
@@ -126,5 +141,41 @@ btnClose.onclick = function() {
     modal.style.display = "none";
 }
 ```
+
+Using plain *JavaScript*, we get our buttons (the button to open the modal, and the button to close it), and then attach `onclick` event listeners that call a function when the user clicks on them.
+
+Each function does very similar things, they get the modal and change its *CSS* `display` property; `block` to show the modal and `none` to hide it.
+
+Everything is pretty much done, but we can still improve it by adding a background overlay that stays in front of the page's content and behind the modal. This will highlight our modal and make it more noticeable.
+
+Start by opening the `index.html` file.
+
+```html title="index.html" ins={3}
+<!-- ... (previous code) -->
+<button id="btnModal">Open Modal</button>
+<div id="overlay"></div>
+<div id="modal">
+<!-- ... -->
+```
+
+Our changes are just to add an empty `<div>` that represents the overlay. Now we need to style it, in order to actually be an overlay.
+
+Open the `styles.css` file and add the following styles.
+
+```css title="styles.css"
+/* ... (previous code) */
+#overlay {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+```
+
+By adding a fixed position at `top: 0` and `left: 0` with `width` and `height` properties with `100%` value, we make the overlay occupying the whole page, just like we wanted.
 
 ## The recap
