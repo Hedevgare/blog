@@ -76,7 +76,7 @@ body {
 
 Now that we have our *HTML* structure and can start adding some interactivity.
 
-If you try the code that we have so far, the modal it's being shown under the `<button id="btnModal">Open modal</button>`, as it should, because we are missing the styles to hide it.
+If you try the code that we have so far, the modal is being shown under the `<button id="btnModal">Open modal</button>`, as it should, because we are missing the styles to hide it.
 
 Open the `styles.css` file and add the following styles.
 
@@ -120,11 +120,11 @@ Open the `styles.css` file and add the following styles.
 }
 ```
 
-Here, we style our modal, by making it appear in the middle of the screen, in front of all other content, and with a `box-shadow` to make it more noticeable; we also style the modal components, like the close button and the header.
+Here, we style our modal, by hiding it by default and positioning it in the middle of the screen, in front of all other content, and with a `box-shadow` to make it more noticeable; we also style the modal components, like the close button and the header.
 
 Now we just need to make the modal show when the button is clicked.
 
-Let's go ahead and create a file called `script.js` and write the following code.
+Let's go ahead and create a *JavaScript* file called `script.js` and write the following code.
 
 ```js title="script.js"
 let btnModal = document.getElementById("btnModal");
@@ -176,6 +176,27 @@ Open the `styles.css` file and add the following styles.
 }
 ```
 
-By adding a fixed position at `top: 0` and `left: 0` with `width` and `height` properties with `100%` value, we make the overlay occupying the whole page, just like we wanted.
+By adding a fixed position at `top: 0` and `left: 0` with `width` and `height` properties with `100%` value, we make the sure that the overlay occupies the whole page, just like we wanted.
 
-## The recap
+Now, we just need to make the overlay show when the modal opens.
+
+Open the `script.js` file and add the following code.
+
+```js title="script.js" ins={3-4} ins={7-8}
+// ... (previous code)
+btnModal.onclick = function() {
+    let overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+// ...
+btnClose.onclick = function() {
+    let overlay = document.getElementById("overlay");
+    overlay.style.display = "none";
+// ...
+```
+
+We use the same logic, that we used to open the modal, to show the overlay; make the `display` property have a `block` value when the modal opens and changing it to `none` when the modal closes.
+
+After this changes, if you try this code, you'll see a greyish background when you click the button to open the modal.
+
+# The recap
+We got to the end of our post; let's recap everything we've done:
