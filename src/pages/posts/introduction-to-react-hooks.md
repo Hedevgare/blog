@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Introduction to React Hooks'
-pubDate: 2024-07-28
+pubDate: 2024-09-22
 description: "Explore the essentials of React Hooks in this comprehensive beginner's guide. Learn how to simplify your React code by managing state and side effects with ease, even if you are new to web development."
 author: 'Edgar Moreira'
 tags: ["Beginner", "Javascript", "React", "React Hooks", "Web Development"]
