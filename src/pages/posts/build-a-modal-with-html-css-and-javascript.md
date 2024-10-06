@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Building a Modal with HTML, CSS and JavaScript'
-pubDate: 2024-08-18
+pubDate: 2024-10-06
 description: 'This tutorial guides you through building your own custom modals, perfect for displaying content, alerts or forms on wny webpage, using HTML, CSS and JavaScript.'
 author: 'Edgar Moreira'
 tags: ["CSS", "Frontend Development", "HTML", "JavaScript", "Tutorial", "Web Development"]
 ---
 
-A modal is very widely used in web development as a versatile UI component for displaying content or messages without redirecting users to another page. It appears as a pop-up window that overlays the main content, making it perfect for alerts, forms, image galleries, and more, all while keeping an interactive and seamless user experience.
+A modal is very widely used in web development as a versatile UI component for displaying content or messages without redirecting users to another page. It appears as a pop-up window that overlays the main content, making it perfect for alerts, forms, image galleries, and more, all while maintaining an interactive and seamless user experience.
 
 ---
 
@@ -19,7 +19,7 @@ A modal is very widely used in web development as a versatile UI component for d
 ## The implementation
 Let's start by creating an *HTML* file, I named mine `index.html`, and put some basic structure to begin with.
 
-We'll have a `<h1>` tag instructing the user to click the button to open the modal, and the button that when clicked will open the modal.
+We'll have a `<h1>` tag instructing the user to click the button to open the modal, and the button that, when clicked, will open the modal.
 
 ```html title="index.html"
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ We'll have a `<h1>` tag instructing the user to click the button to open the mod
 </html>
 ```
 
-Now we'll add the `HTML` for the modal. It will be represented by a `div` with an `id=modal` containing an header and a body for content.
+Now we'll add the `HTML` for the modal. It will be represented by a `div` with an `id=modal` and it will contain an header `div` for the modal title and close button and the content of the modal.
 
 We will also add some *CSS* classes and IDs for styling and DOM manipulation with *JavaScript*.
 
@@ -74,7 +74,7 @@ body {
 }
 ```
 
-Now that we have our *HTML* structure and can start adding some interactivity.
+Now that we have our *HTML* structure, we can start adding some styling and interactivity.
 
 If you try the code that we have so far, the modal is being shown under the `<button id="btnModal">Open modal</button>`, as it should, because we are missing the styles to hide it.
 
@@ -158,7 +158,7 @@ Start by opening the `index.html` file.
 <!-- ... -->
 ```
 
-Our changes are just to add an empty `<div>` that represents the overlay. Now we need to style it, in order to actually be an overlay.
+Our changes are just to add an empty `<div>` that represents the overlay. Now we need to style it in order for it to actually be an overlay.
 
 Open the `styles.css` file and add the following styles.
 
@@ -188,15 +188,22 @@ btnModal.onclick = function() {
     let overlay = document.getElementById("overlay");
     overlay.style.display = "block";
 // ...
+}
 btnClose.onclick = function() {
     let overlay = document.getElementById("overlay");
     overlay.style.display = "none";
 // ...
+}
 ```
 
-We use the same logic, that we used to open the modal, to show the overlay; make the `display` property have a `block` value when the modal opens and changing it to `none` when the modal closes.
+We use the same logic, that we used to open the modal, to show the overlay: making the `display` property have a `block` value when the modal opens and changing it to `none` when the modal closes.
 
-After this changes, if you try this code, you'll see a greyish background when you click the button to open the modal.
+After these changes, if you try this code, you'll see a greyish background when you click the button to open the modal.
+
+And that's it, we have a functioning modal built with plain *HTML*, *CSS*, and *JavaScript*.
 
 # The recap
 We got to the end of our post; let's recap everything we've done:
+* **Create the *HTML* skeleton**: we defined the structure of our page, the main content, and the modal;
+* **Add interactivity**: we added logic code with *JavaScript* so that when a button is pressed, the modal shows; it also closes when the close button is clicked;
+* **Style the modal**: we styled our modal to appear at the center of the screen; we also created an overlay to make the modal more noticeable.
