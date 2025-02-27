@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate } from "../utils/dates";
 
 const pageTitle = "My Astro Learning Blog";
 
@@ -27,7 +28,8 @@ const { prev, next } = page.url;
                 <p>{post.frontmatter.description}</p>
                 <p>
                     Published in{" "}
-                    {post.frontmatter.pubDate.toString().slice(0, 10)}
+                    {formatDate(new Date(Date.parse(post.frontmatter.pubDate)))}
+                    {/* {post.frontmatter.pubDate.toString().slice(0, 10)} */}
                 </p>
             </div>
         ))

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Guide to Stateful and Stateless Widgets in Flutter'
-pubDate: 2024-08-25
+pubDate: 2025-01-19
 description: 'Learn the fundamental differences between Stateful and Stateless widgets in Flutter. This guide will help you understand how and when to use each of them to create dynamic apps.'
 author: 'Edgar Moreira'
 tags: ["Beginner", "Dart", "Flutter", "Flutter Widgets"]
