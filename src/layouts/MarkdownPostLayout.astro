@@ -26,4 +26,5 @@ const { frontmatter } = Astro.props;
                 ))}
         </div>
     )}
+    <p class="post-last-updated">Last updated on {frontmatter.updatedDate.toString().slice(0, 10)}</p>
 </BaseLayout>

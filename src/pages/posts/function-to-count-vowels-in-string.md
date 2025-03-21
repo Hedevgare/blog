@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'How to Create a Function to Count Vowels in a String'
-pubDate: 2025-01-05
+pubDate: 2025-02-02
+updatedDate: 2025-02-02
 description: 'This post guides you through creating a function to count the vowels in a string. It covers the logic and provides examples, making it suitable for both beginners and those looking to refresh their skills.'
 author: 'Edgar Moreira'
 tags: ["Algorithm", "Beginner", "Javascript"]

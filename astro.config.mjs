@@ -30,15 +30,21 @@ export default defineConfig({
                 lineMarkerLabelColor: "#141414"
             },
             frames: {
-                editorActiveTabIndicatorTopColor: "#DEEFB7",
-                editorTabBarBorderBottomColor: "#24292e",
-                editorTabBarBackground: "#141414",
+                editorActiveTabIndicatorTopColor: "#4ABCCA",
+                editorActiveTabBackground: "#0c1021",
+                editorActiveTabIndicatorBottomColor: "#0c1021",
+                editorTabBarBorderBottomColor: "#020617",
+                editorTabBarBackground: "#020617",
+                editorBackground: "#0c1021",
+
+                tooltipSuccessBackground: "#4ABCCA",
+                tooltipSuccessForeground: "#0c1021",
+                
                 frameBoxShadowCssValue: 0,
-                tooltipSuccessBackground: "#DEEFB7",
-                tooltipSuccessForeground: "#141414"
             },
             codeFontFamily: "Ubuntu Sans Mono",
             uiFontFamily: "Ubuntu Sans Mono",
+            borderColor: "#0c1021",
             borderRadius: 0,
         }
     })]

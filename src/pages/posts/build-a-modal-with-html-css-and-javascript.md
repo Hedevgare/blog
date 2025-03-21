@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Building a Modal with HTML, CSS and JavaScript'
-pubDate: 2025-03-02
+pubDate: 2025-03-30
+updatedDate: 2025-03-30
 description: 'This tutorial guides you through building your own custom modals, perfect for displaying content, alerts or forms on wny webpage, using HTML, CSS and JavaScript.'
 author: 'Edgar Moreira'
 tags: ["CSS", "Frontend Development", "HTML", "JavaScript", "Tutorial", "Web Development"]

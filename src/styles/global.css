@@ -2,8 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
 
 :root {
-    --bg-color: #141414;
-    --fg-color: #DEEFB7;
+    /* --bg-color: #141414; */
+    --bg-color: #020617;
+    /* --fg-color: #DEEFB7; */
+    --fg-color: #4ABCCA;
     --code-bg-color: #24292e;
     --code-color: #a5a5a5;
 }
@@ -45,7 +47,7 @@ hr {
 }
 
 strong {
-    color: #DEEFB7;
+    color: var(--fg-color);
 }
 
 .page-title {
@@ -55,7 +57,9 @@ strong {
 }
 
 .page-title > a {
-    color: #ffffff;
+    background: linear-gradient(90deg, #60a5fa, #34d399);
+    color: transparent;
+    background-clip: text;
     text-decoration: none;
 }
 
@@ -63,7 +67,7 @@ strong {
     padding-bottom: 30px;
     margin-top: 0;
     margin-bottom: 20px;
-    border-bottom: 10px #ffffff solid;
+    border-bottom: 10px var(--fg-color) solid;
 }
 
 .post {
@@ -77,6 +81,10 @@ strong {
 
 .post-title > a:hover {
     text-decoration-thickness: 15%;
+}
+
+.post-last-updated {
+    font-size: 14px;
 }
 
 .pagination-buttons {

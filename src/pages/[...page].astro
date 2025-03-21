@@ -27,9 +27,8 @@ const { prev, next } = page.url;
                 </p>
                 <p>{post.frontmatter.description}</p>
                 <p>
-                    Published in{" "}
-                    {formatDate(new Date(Date.parse(post.frontmatter.pubDate)))}
-                    {/* {post.frontmatter.pubDate.toString().slice(0, 10)} */}
+                    Published on{" "}
+                    {post.frontmatter.pubDate.toString().slice(0, 10)}
                 </p>
             </div>
         ))
