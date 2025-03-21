@@ -15,9 +15,11 @@ const BASE_URL: string = 'https://blog.hedegaremoreira.com/';
         <title>{pageTitle}</title>
     </head>
     <body>
-        <h1 class="page-title"><a href={isProd ? BASE_URL : '/'}>Hedegare's Blog</a></h1>
-        <h2 class="page-subtitle">Building - Learning - Optimizing - Growing</h2>
-        <slot />
+        <main>
+            <h1 class="page-title"><a href={isProd ? BASE_URL : '/'}>Hedegare's Blog</a></h1>
+            <h2 class="page-subtitle">Building - Learning - Optimizing - Growing</h2>
+            <slot />
+        </main>
         <footer><a href="https://hedegaremoreira.com">Hedegare</a> - 2025</footer>
     </body>
 </html>
