@@ -124,3 +124,23 @@ strong {
     margin: 0;
     font-size: 1.15em;
 }
+
+@media screen and (max-width: 768px) {
+    .container-404 {
+        margin: 0;
+    }
+
+    .page-title {
+        font-size: 40px;
+    }
+
+    .page-subtitle {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-title {
+        margin-top: 25px;
+    }    
+}
