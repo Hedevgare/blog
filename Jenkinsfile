@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     environment {
-        REMOTE_USER = "moglico"
-        REMOTE_HOST = "159.223.235.105"
+        REMOTE_USER = credentials('VPS-Username')
+        REMOTE_HOST = credentials('VPS-IP')
         REMOTE_PATH = "/var/www/html/blog"
         SSH_CRED_ID = "VPS-Key"
     }
