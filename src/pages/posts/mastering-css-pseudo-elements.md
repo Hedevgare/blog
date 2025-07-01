@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: 'Mastering CSS Pseudo-Elements: Unlock the Power of "::before" and "::after"'
-pubDate: 2025-03-02
-updatedDate: 2025-03-02
+pubDate: 2025-06-15
+updatedDate: 2025-06-15
 description: 'Learn how to effectively use CSS pseudo-elements like `::before` and `::after` to enhance your web design skills with practical examples and best practices.'
 author: 'Edgar Moreira'
 tags: ["Beginner", "CSS", "Pseudo-Elements", "Web Development"]
