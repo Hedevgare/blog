@@ -39,7 +39,7 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: env.SSH_CRED_ID, keyFileVariable: 'SSH_KEY')]) {
                     bat """
-                    ssh -i %SSH_KEY% %REMOTE_USER%@%REMOTE_HOST% "sudo chmod -R 755 %REMOTE_PATH%/posts && sudo chmod 755 %REMOTE_PATH%/_astro"
+                    ssh -i %SSH_KEY% %REMOTE_USER%@%REMOTE_HOST% "sudo chmod -R 755 %REMOTE_PATH%/posts && sudo chmod 755 %REMOTE_PATH%/_astro && chmod 755 %REMOTE_PATH%/[0-9]*"
                     """
                 }
             }
