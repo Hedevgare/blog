@@ -132,6 +132,7 @@ strong {
 .resources {
     display: flex;
     flex-direction: column;
+    overflow-x: scroll;
 }
 
 .tags {
@@ -148,6 +149,20 @@ strong {
 }
 
 @media screen and (max-width: 768px) {
+    blockquote {
+        padding: 0;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    blockquote::before {
+        top: -30px;
+    }
+
+    blockquote::after {
+        bottom: -50px;
+    }
+
     .container-404 {
         margin: 0;
     }
