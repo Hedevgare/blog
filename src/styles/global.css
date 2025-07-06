@@ -39,6 +39,28 @@ a {
     color: var(--fg-color);
 }
 
+blockquote {
+    position: relative;
+    font-style: italic;
+    padding: 20px;
+}
+
+blockquote::before {
+    content: "\201C";
+    position: absolute;
+    top: -10px;
+    left: -35px;
+    font-size: 3rem;
+}
+
+blockquote::after {
+    content: "\201D";
+    position: absolute;
+    bottom: -30px;
+    right: -15px;
+    font-size: 3rem;
+}
+
 code {
     font-family: 'Ubuntu Sans Mono', monospace;
     background-color: var(--fg-color);

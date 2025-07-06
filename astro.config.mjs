@@ -16,6 +16,7 @@ export default defineConfig({
         }
     },
     integrations: [expressiveCode({
+        useDarkModeMediaQuery: false,
         plugins: [pluginLineNumbers()],
         defaultProps: {
             showLineNumbers: true,
@@ -32,6 +33,7 @@ export default defineConfig({
             frames: {
                 editorActiveTabIndicatorTopColor: "#4ABCCA",
                 editorActiveTabBackground: "#0c1021",
+                editorActiveTabForeground: "#4ABCCA",
                 editorActiveTabIndicatorBottomColor: "#0c1021",
                 editorTabBarBorderBottomColor: "#020617",
                 editorTabBarBackground: "#020617",
