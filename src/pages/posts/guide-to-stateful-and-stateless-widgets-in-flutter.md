@@ -108,4 +108,4 @@ We've explored the fundamental concepts of widgets and learned that they are the
 
 Stateless widgets (like `CustomListItem` we created before) are perfect for static content; while Stateful widgets (like `CustomDynamicList`) handle dynamic and changeable states within your app.
 
-By understanding these principles and concepts, you can build robust, dynamic, and maintable *Flutter* apps.
+By understanding these principles and concepts, you can build robust, dynamic, and maintainable *Flutter* apps.

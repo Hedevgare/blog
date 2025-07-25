@@ -38,6 +38,10 @@ export default defineConfig({
                 editorTabBarBorderBottomColor: "#020617",
                 editorTabBarBackground: "#020617",
                 editorBackground: "#0c1021",
+                terminalBackground: "#0c1021",
+                terminalTitlebarBackground: "#020617",
+                terminalTitlebarDotsForeground: "#4ABCCA",
+                terminalTitlebarDotsOpacity: 0.5,
 
                 tooltipSuccessBackground: "#4ABCCA",
                 tooltipSuccessForeground: "#0c1021",

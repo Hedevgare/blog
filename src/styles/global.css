@@ -132,7 +132,7 @@ strong {
 .resources {
     display: flex;
     flex-direction: column;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .tags {
