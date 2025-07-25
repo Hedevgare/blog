@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { formatDate } from "../utils/dates";
 
-const pageTitle = "My Astro Learning Blog";
+const pageTitle = "Hedegare's Blog";
 
 export async function getStaticPaths({ paginate }: any): Promise<any> {
     const pages = await Astro.glob("./posts/*.md");
@@ -26,10 +26,10 @@ const { prev, next } = page.url;
                     </a>
                 </p>
                 <p>{post.frontmatter.description}</p>
-                <p>
+                {/* <p>
                     Published on{" "}
                     {post.frontmatter.pubDate.toString().slice(0, 10)}
-                </p>
+                </p> */}
             </div>
         ))
     }
