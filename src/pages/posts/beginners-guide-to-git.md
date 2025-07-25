@@ -24,7 +24,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
 ```
 
-The `--global` flag means this configuration applies to all your *Git* projects, so you only need to do thes once.
+The `--global` flag means this configuration applies to all your *Git* projects, so you only need to do this once.
 
 To verify your settings, run:
 
@@ -47,7 +47,7 @@ git init
 The `init`  command creates a hidden folder called `.git` inside your project, where *Git* stores all the information it needs to track your project's history.
 
 ## Track and save changes
-Now you are ready to start tracking changes to your files. *Git* does this in two steps: **stagging** and **commiting**.
+Now you are ready to start tracking changes to your files. *Git* does this in two steps: **staging** and **committing**.
 
 ### Staging
 In this step you simply indicate to *Git* what files you want to include in the next version.
@@ -62,7 +62,7 @@ To add all files you can use the `--all` flag.
 git add --all
 ```
 
-### Commiting
+### Committing
 After staging your work, you are ready to commit. Commit is like a saving point in your work. It records a snapshot of your files at a certain time, with a message describing what changed. This allows you to go back to a previous commit if you need to.
 
 ```bash
@@ -109,7 +109,7 @@ git branch new-feature
 
 In this example, `new-feature` is the name of the branch. You can name it whatever you want.
 
-However, you are still on the main branch. To switch to the newly created branch, use:
+By default, you are still on the main branch. To switch to the newly created branch, use:
 
 ```bash
 git checkout new-feature
@@ -117,7 +117,7 @@ git checkout new-feature
 
 Now you are correctly on the `new-feature` branch and ready to start making changes to your code.
 
-You can also do these two last steps in one single command:
+You can also do these last two steps in one single command:
 
 ```bash
 git checkout -b new-feature
@@ -144,6 +144,8 @@ git merge new-feature
 At this point, your changes are on the main branch and ready to be pushed to production.
 
 ## Conclusion
+
+That's it!
 
 We've explored the fundamentals of Git, how to set up a repository, track and save changes, explore your project’s history, and manage your code with branches and merges. These skills aren’t just nice to have. They are essential for working on real-world projects, whether you’re coding alone or collaborating with a team.
 
